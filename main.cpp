@@ -1,8 +1,9 @@
 // Tic Tac Toe Game
-
 #include <iostream>
 #include <locale.h>
 using namespace std;
+
+int contagem = 0;
 int main()
 {
     setlocale(LC_ALL, "pt_BR.utf8");
@@ -37,6 +38,10 @@ int main()
             }
         }
 
+        if (contagem == 9) {
+            cout << "Empate! Nenhum jogador venceu." << endl;
+            return 0;
+        }
         for (int i = 0; i < 3; i++) {
             if ((matriz[i][0] == matriz[i][1] && matriz[i][0] == matriz[i][2]) || (matriz[0][i] == matriz[1][i] && matriz[1][i] == matriz[2][i]) || (matriz[0][0] == matriz[1][1] && matriz[0][0] == matriz[2][2]) || (matriz[0][2] == matriz[1][1] && matriz[0][2] == matriz[2][0])) {
                 // "?" --> ternary operator it is like a if and else in one line
@@ -76,7 +81,8 @@ int main()
             matriz[(jogada - 1) / 3][(jogada - 1) % 3] = 'O';
             jogador = 1;
         }
-        
+
+        contagem++;
     }
     
     return 0;
